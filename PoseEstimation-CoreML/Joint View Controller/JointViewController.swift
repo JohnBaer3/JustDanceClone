@@ -49,19 +49,27 @@ class JointViewController: UIViewController {
     private var tableData: [PredictedPoint?] = []
     
     
-    var isRecording = false
-
-    
-    
+    var timer = Timer()
+    var latestPredictions: [Int:(CGFloat,CGFloat)?] = [:]
+    var isRecording = false{
+        didSet{
+            if isRecording{
+                timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(recordPredictions), userInfo: nil, repeats: true)
+            }else{
+                timer.invalidate()
+                predictionsWTimeStamp = []
+            }
+        }
+    }
+    var predictionsWTimeStamp: [[Int:(CGFloat, CGFloat)?]] = []
     
     @IBAction func recordButtonClicked(_ sender: Any) {
         isRecording = !isRecording
-        
-        if isRecording{
-            
-        }
     }
     
+    @objc func recordPredictions(){
+        predictionsWTimeStamp.append(latestPredictions)
+    }
     
     
     
@@ -200,6 +208,8 @@ extension JointViewController {
             DispatchQueue.main.sync {
                 // draw line
                 self.jointView.bodyPoints = predictedPoints
+                
+                latestPredictions = self.jointView.latestBodyPointPredictions
                 
                 // show key points description
                 self.showKeypointsDescription(with: predictedPoints)
