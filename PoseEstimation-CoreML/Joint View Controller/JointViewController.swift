@@ -48,8 +48,19 @@ class JointViewController: UIViewController {
     // Inference Result Data
     private var tableData: [PredictedPoint?] = []
     
-    //
+    
     var isRecording = false
+
+    
+    
+    
+    @IBAction func recordButtonClicked(_ sender: Any) {
+        isRecording = !isRecording
+        
+        if isRecording{
+            
+        }
+    }
     
     
     
@@ -181,6 +192,7 @@ extension JointViewController {
                 filter.add(element: predictedPoint)
             }
             predictedPoints = mvfilters.map { $0.averagedValue() }
+            
             /* =================================================================== */
 
             /* =================================================================== */
@@ -188,10 +200,10 @@ extension JointViewController {
             DispatchQueue.main.sync {
                 // draw line
                 self.jointView.bodyPoints = predictedPoints
-
+                
                 // show key points description
                 self.showKeypointsDescription(with: predictedPoints)
-
+                
                 // end of measure
                 self.👨‍🔧.🎬🤚()
                 self.isInferencing = false

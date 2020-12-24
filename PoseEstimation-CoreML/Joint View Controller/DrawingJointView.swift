@@ -35,11 +35,14 @@ class DrawingJointView: UIView {
             view.layer.borderColor = UIColor.black.cgColor
             view.layer.borderWidth = 1.4
             
+            
+            //Right here it adds the labels "top", "neck", "R shoulder", ... etc
             let label = UILabel(frame: CGRect(x: pointSize.width * 1.4, y: 0, width: 100, height: pointSize.height))
             label.text = PoseEstimationForMobileConstant.pointLabels[index%PoseEstimationForMobileConstant.colors.count]
             label.textColor = color
             label.font = UIFont.preferredFont(forTextStyle: .caption2)
             view.addSubview(label)
+                        
             self.addSubview(view)
             return view
         }
@@ -90,7 +93,10 @@ class DrawingJointView: UIView {
             setUpLabels(with: n_kpoints.count)
         }
         
+        //Right here, 0 is top, 1 is neck, etc... it's all right there in the function right underneath
         for (index, kp) in n_kpoints.enumerated() {
+            print(index, " ", kp)
+            
             if let n_kp = kp {
                 let x = n_kp.maxPoint.x * imageFrame.width
                 let y = n_kp.maxPoint.y * imageFrame.height

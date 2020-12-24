@@ -27,6 +27,7 @@
 		71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
 		71F3DAE223659D7400DB67F8 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455122F1C890000ED787 /* model_cpm.mlmodel */; };
 		71F3DAE323659D7700DB67F8 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
+		CBCC06C025942E9C00997A70 /* PointRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC06BF25942E9C00997A70 /* PointRecords.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		71EF2DC422C4878D009391C8 /* PredictedPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedPoint.swift; sourceTree = "<group>"; };
 		71F1455122F1C890000ED787 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_cpm.mlmodel; sourceTree = "<group>"; };
 		71F1455222F1C890000ED787 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_hourglass.mlmodel; sourceTree = "<group>"; };
+		CBCC06BF25942E9C00997A70 /* PointRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointRecords.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				71EF2DC422C4878D009391C8 /* PredictedPoint.swift */,
+				CBCC06BF25942E9C00997A70 /* PointRecords.swift */,
 				71EF2DC222C469FD009391C8 /* HeatmapPostProcessor.swift */,
 				71EF2DC022C3662A009391C8 /* MovingAverageFilter.swift */,
 				554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBCC06C025942E9C00997A70 /* PointRecords.swift in Sources */,
 				71F1455322F1C890000ED787 /* model_cpm.mlmodel in Sources */,
 				71EF2DC122C3662A009391C8 /* MovingAverageFilter.swift in Sources */,
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
