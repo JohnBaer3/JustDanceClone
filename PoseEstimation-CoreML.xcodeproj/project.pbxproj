@@ -28,6 +28,7 @@
 		71F3DAE223659D7400DB67F8 /* model_cpm.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455122F1C890000ED787 /* model_cpm.mlmodel */; };
 		71F3DAE323659D7700DB67F8 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
 		CBCC06C025942E9C00997A70 /* PointRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC06BF25942E9C00997A70 /* PointRecords.swift */; };
+		CBCC06C62598444200997A70 /* DanceScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC06C52598444200997A70 /* DanceScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		71F1455122F1C890000ED787 /* model_cpm.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_cpm.mlmodel; sourceTree = "<group>"; };
 		71F1455222F1C890000ED787 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_hourglass.mlmodel; sourceTree = "<group>"; };
 		CBCC06BF25942E9C00997A70 /* PointRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointRecords.swift; sourceTree = "<group>"; };
+		CBCC06C52598444200997A70 /* DanceScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,15 +135,16 @@
 		557F531120ED252100CFCCD7 /* PoseEstimation-CoreML */ = {
 			isa = PBXGroup;
 			children = (
-				71F1455122F1C890000ED787 /* model_cpm.mlmodel */,
-				71F1455222F1C890000ED787 /* model_hourglass.mlmodel */,
+				557F531620ED252100CFCCD7 /* Main.storyboard */,
 				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
 				554F148C2203057400B828B0 /* Joint View Controller */,
-				714087F42302E7B000F7EDF4 /* Pose Matching View Controller */,
+				CBCC06CB2598444900997A70 /* Dance Screen VC */,
 				554F148E2203059B00B828B0 /* Common */,
 				557F532420ED25AF00CFCCD7 /* VideoCapture.swift */,
+				714087F42302E7B000F7EDF4 /* Pose Matching View Controller */,
 				557F532520ED25AF00CFCCD7 /* Measure.swift */,
-				557F531620ED252100CFCCD7 /* Main.storyboard */,
+				71F1455122F1C890000ED787 /* model_cpm.mlmodel */,
+				71F1455222F1C890000ED787 /* model_hourglass.mlmodel */,
 				557F531920ED252400CFCCD7 /* Assets.xcassets */,
 				557F531B20ED252400CFCCD7 /* LaunchScreen.storyboard */,
 				557F531E20ED252400CFCCD7 /* Info.plist */,
@@ -155,6 +158,14 @@
 				714087F22302E7AC00F7EDF4 /* PoseMatchingViewController.swift */,
 			);
 			path = "Pose Matching View Controller";
+			sourceTree = "<group>";
+		};
+		CBCC06CB2598444900997A70 /* Dance Screen VC */ = {
+			isa = PBXGroup;
+			children = (
+				CBCC06C52598444200997A70 /* DanceScreenViewController.swift */,
+			);
+			path = "Dance Screen VC";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +284,7 @@
 			files = (
 				CBCC06C025942E9C00997A70 /* PointRecords.swift in Sources */,
 				71F1455322F1C890000ED787 /* model_cpm.mlmodel in Sources */,
+				CBCC06C62598444200997A70 /* DanceScreenViewController.swift in Sources */,
 				71EF2DC122C3662A009391C8 /* MovingAverageFilter.swift in Sources */,
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
 				71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */,

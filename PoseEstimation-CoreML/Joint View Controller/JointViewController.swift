@@ -22,6 +22,10 @@ class JointViewController: UIViewController {
     @IBOutlet weak var jointView: DrawingJointView!
     @IBOutlet weak var labelsTableView: UITableView!
     
+    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var redoButton: UIButton!
+    @IBOutlet weak var finishButton: UIButton!
+    
     @IBOutlet weak var inferenceLabel: UILabel!
     @IBOutlet weak var etimeLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
@@ -49,26 +53,46 @@ class JointViewController: UIViewController {
     private var tableData: [PredictedPoint?] = []
     
     
+    var recordButtonTransparent = false
     var timer = Timer()
     var latestPredictions: [Int:(CGFloat,CGFloat)?] = [:]
+    var predictionsInOrder: [[Int:(CGFloat, CGFloat)?]] = []
     var isRecording = false{
         didSet{
             if isRecording{
+                flipButtons()
                 timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(recordPredictions), userInfo: nil, repeats: true)
             }else{
-                timer.invalidate()
-                predictionsWTimeStamp = []
+                flipButtons()
             }
         }
     }
-    var predictionsWTimeStamp: [[Int:(CGFloat, CGFloat)?]] = []
     
     @IBAction func recordButtonClicked(_ sender: Any) {
-        isRecording = !isRecording
+        isRecording = true
+    }
+    
+    @IBAction func redoButtonClicked(_ sender: Any) {
+        timer.invalidate()
+        predictionsInOrder = []
+        isRecording = false
     }
     
     @objc func recordPredictions(){
-        predictionsWTimeStamp.append(latestPredictions)
+        predictionsInOrder.append(latestPredictions)
+    }
+    
+    func flipButtons(){
+        recordButtonTransparent = !recordButtonTransparent
+        if recordButtonTransparent{
+            recordButton.alpha = 0
+            redoButton.alpha = 1.0
+            finishButton.alpha = 1.0
+        }else{
+            recordButton.alpha = 1.0
+            redoButton.alpha = 0
+            finishButton.alpha = 0
+        }
     }
     
     
@@ -77,6 +101,9 @@ class JointViewController: UIViewController {
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        redoButton.alpha = 0
+        finishButton.alpha = 0
         
         // setup the model
         setUpModel()
@@ -133,6 +160,16 @@ class JointViewController: UIViewController {
                 
                 // start video preview when setup is done
                 self.videoCapture.start()
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if let identifier = segue.identifier {
+            if identifier == "GoToDanceSegue"{
+                if let vc = segue.destination as? DanceScreenViewController{
+                    vc.predictionsInOrder = predictionsInOrder
+                }
             }
         }
     }
