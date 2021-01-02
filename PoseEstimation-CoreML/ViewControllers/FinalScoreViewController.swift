@@ -1,26 +1,19 @@
 //
-//  DanceScreenViewController.swift
+//  FinalScoreViewController.swift
 //  PoseEstimation-CoreML
 //
-//  Created by John Baer on 12/26/20.
-//  Copyright © 2020 tucan9389. All rights reserved.
+//  Created by John Baer on 1/2/21.
+//  Copyright © 2021 tucan9389. All rights reserved.
 //
 
 import UIKit
 
-class DanceScreenViewController: UIViewController {
+class FinalScoreViewController: UIViewController {
 
-    
-    
-    
-    var predictionsInOrder: [[Int:(CGFloat, CGFloat)?]] = []
+    @IBOutlet weak var scoreLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(predictionsInOrder[0])
-
-        // Do any additional setup after loading the view.
     }
     
 

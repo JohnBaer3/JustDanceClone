@@ -55,8 +55,9 @@ class JointViewController: UIViewController {
     
     var recordButtonTransparent = false
     var timer = Timer()
+    var timestamp: Float = 0.0
     var latestPredictions: [Int:(CGFloat,CGFloat)?] = [:]
-    var predictionsInOrder: [[Int:(CGFloat, CGFloat)?]] = []
+    var predictionsWTimestamp: [Float:[Int:(CGFloat, CGFloat)?]] = [:]
     var isRecording = false{
         didSet{
             if isRecording{
@@ -74,12 +75,13 @@ class JointViewController: UIViewController {
     
     @IBAction func redoButtonClicked(_ sender: Any) {
         timer.invalidate()
-        predictionsInOrder = []
+        predictionsWTimestamp = [:]
         isRecording = false
     }
     
     @objc func recordPredictions(){
-        predictionsInOrder.append(latestPredictions)
+        predictionsWTimestamp[timestamp] = latestPredictions
+        timestamp += 0.1
     }
     
     func flipButtons(){
@@ -168,7 +170,7 @@ class JointViewController: UIViewController {
         if let identifier = segue.identifier {
             if identifier == "GoToDanceSegue"{
                 if let vc = segue.destination as? DanceScreenViewController{
-                    vc.predictionsInOrder = predictionsInOrder
+                    vc.predictionsWTimestamp = predictionsWTimestamp
                 }
             }
         }

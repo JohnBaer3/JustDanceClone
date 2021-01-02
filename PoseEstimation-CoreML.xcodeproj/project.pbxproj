@@ -29,6 +29,7 @@
 		71F3DAE323659D7700DB67F8 /* model_hourglass.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71F1455222F1C890000ED787 /* model_hourglass.mlmodel */; };
 		CBCC06C025942E9C00997A70 /* PointRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC06BF25942E9C00997A70 /* PointRecords.swift */; };
 		CBCC06C62598444200997A70 /* DanceScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC06C52598444200997A70 /* DanceScreenViewController.swift */; };
+		CBCC06DB25A1090900997A70 /* FinalScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC06DA25A1090900997A70 /* FinalScoreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		71F1455222F1C890000ED787 /* model_hourglass.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = model_hourglass.mlmodel; sourceTree = "<group>"; };
 		CBCC06BF25942E9C00997A70 /* PointRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointRecords.swift; sourceTree = "<group>"; };
 		CBCC06C52598444200997A70 /* DanceScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceScreenViewController.swift; sourceTree = "<group>"; };
+		CBCC06DA25A1090900997A70 /* FinalScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,13 +95,14 @@
 			path = "PoseEstimation-CoreMLTests";
 			sourceTree = "<group>";
 		};
-		554F148C2203057400B828B0 /* Joint View Controller */ = {
+		554F148C2203057400B828B0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CBCC06DA25A1090900997A70 /* FinalScoreViewController.swift */,
+				CBCC06C52598444200997A70 /* DanceScreenViewController.swift */,
 				557F531420ED252100CFCCD7 /* JointViewController.swift */,
-				555B477321F61234009026AB /* DrawingJointView.swift */,
 			);
-			path = "Joint View Controller";
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		554F148E2203059B00B828B0 /* Common */ = {
@@ -108,6 +111,7 @@
 				71EF2DC422C4878D009391C8 /* PredictedPoint.swift */,
 				CBCC06BF25942E9C00997A70 /* PointRecords.swift */,
 				71EF2DC222C469FD009391C8 /* HeatmapPostProcessor.swift */,
+				555B477321F61234009026AB /* DrawingJointView.swift */,
 				71EF2DC022C3662A009391C8 /* MovingAverageFilter.swift */,
 				554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */,
 			);
@@ -136,13 +140,12 @@
 			isa = PBXGroup;
 			children = (
 				557F531620ED252100CFCCD7 /* Main.storyboard */,
-				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
-				554F148C2203057400B828B0 /* Joint View Controller */,
-				CBCC06CB2598444900997A70 /* Dance Screen VC */,
+				554F148C2203057400B828B0 /* ViewControllers */,
 				554F148E2203059B00B828B0 /* Common */,
 				557F532420ED25AF00CFCCD7 /* VideoCapture.swift */,
 				714087F42302E7B000F7EDF4 /* Pose Matching View Controller */,
 				557F532520ED25AF00CFCCD7 /* Measure.swift */,
+				557F531220ED252100CFCCD7 /* AppDelegate.swift */,
 				71F1455122F1C890000ED787 /* model_cpm.mlmodel */,
 				71F1455222F1C890000ED787 /* model_hourglass.mlmodel */,
 				557F531920ED252400CFCCD7 /* Assets.xcassets */,
@@ -158,14 +161,6 @@
 				714087F22302E7AC00F7EDF4 /* PoseMatchingViewController.swift */,
 			);
 			path = "Pose Matching View Controller";
-			sourceTree = "<group>";
-		};
-		CBCC06CB2598444900997A70 /* Dance Screen VC */ = {
-			isa = PBXGroup;
-			children = (
-				CBCC06C52598444200997A70 /* DanceScreenViewController.swift */,
-			);
-			path = "Dance Screen VC";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,6 +284,7 @@
 				557F531520ED252100CFCCD7 /* JointViewController.swift in Sources */,
 				71F1455422F1C890000ED787 /* model_hourglass.mlmodel in Sources */,
 				557F532720ED25B000CFCCD7 /* VideoCapture.swift in Sources */,
+				CBCC06DB25A1090900997A70 /* FinalScoreViewController.swift in Sources */,
 				555B477421F61234009026AB /* DrawingJointView.swift in Sources */,
 				71EF2DC322C469FD009391C8 /* HeatmapPostProcessor.swift in Sources */,
 				554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
