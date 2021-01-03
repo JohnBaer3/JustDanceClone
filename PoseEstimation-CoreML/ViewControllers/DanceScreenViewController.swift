@@ -214,7 +214,7 @@ class DanceScreenViewController: UIViewController {
         videoCapture = VideoCapture()
         videoCapture.delegate = self
         videoCapture.fps = 30
-        videoCapture.setUp(sessionPreset: .vga640x480, cameraPosition: .front) { success in
+        videoCapture.setUp(sessionPreset: .hd1920x1080, cameraPosition: .front) { success in
             
             if success {
                 if let previewLayer = self.videoCapture.previewLayer {

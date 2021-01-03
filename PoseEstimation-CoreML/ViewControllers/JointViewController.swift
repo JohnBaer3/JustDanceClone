@@ -142,7 +142,7 @@ class JointViewController: UIViewController {
         videoCapture = VideoCapture()
         videoCapture.delegate = self
         videoCapture.fps = 30
-        videoCapture.setUp(sessionPreset: .vga640x480) { success in
+        videoCapture.setUp(sessionPreset: .hd1920x1080) { success in
             
             if success {
                 if let previewLayer = self.videoCapture.previewLayer {

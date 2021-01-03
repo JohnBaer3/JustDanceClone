@@ -98,9 +98,9 @@
 		554F148C2203057400B828B0 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				CBCC06DA25A1090900997A70 /* FinalScoreViewController.swift */,
-				CBCC06C52598444200997A70 /* DanceScreenViewController.swift */,
 				557F531420ED252100CFCCD7 /* JointViewController.swift */,
+				CBCC06C52598444200997A70 /* DanceScreenViewController.swift */,
+				CBCC06DA25A1090900997A70 /* FinalScoreViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

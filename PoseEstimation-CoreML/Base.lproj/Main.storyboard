@@ -18,14 +18,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2rN-aG-qiz">
-                                <rect key="frame" x="0.0" y="164" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="725"/>
                                 <color key="backgroundColor" red="0.86274509799999999" green="0.63529411759999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="2rN-aG-qiz" secondAttribute="height" multiplier="375:500" id="BHb-1Q-Fwx"/>
+                                    <constraint firstAttribute="width" secondItem="2rN-aG-qiz" secondAttribute="height" multiplier="375:725" id="BHb-1Q-Fwx"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLx-8G-3ly" customClass="DrawingJointView" customModule="PoseEstimation_CoreML">
-                                <rect key="frame" x="0.0" y="164" width="375" height="500"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SwX-Ct-duU">
@@ -60,8 +60,8 @@
                         <constraints>
                             <constraint firstItem="PLx-8G-3ly" firstAttribute="width" secondItem="2rN-aG-qiz" secondAttribute="width" id="Qbc-zA-HV8"/>
                             <constraint firstItem="2rN-aG-qiz" firstAttribute="leading" secondItem="sDs-Q1-Yp7" secondAttribute="leading" id="Rvl-po-ScA"/>
-                            <constraint firstItem="PLx-8G-3ly" firstAttribute="top" secondItem="sDs-Q1-Yp7" secondAttribute="top" constant="76" id="WIC-OM-gcS"/>
-                            <constraint firstItem="PLx-8G-3ly" firstAttribute="height" secondItem="2rN-aG-qiz" secondAttribute="height" id="WkI-nt-pLq"/>
+                            <constraint firstItem="PLx-8G-3ly" firstAttribute="top" secondItem="sDs-Q1-Yp7" secondAttribute="top" id="WIC-OM-gcS"/>
+                            <constraint firstItem="PLx-8G-3ly" firstAttribute="height" secondItem="2rN-aG-qiz" secondAttribute="height" constant="-1" id="WkI-nt-pLq"/>
                             <constraint firstItem="PLx-8G-3ly" firstAttribute="leading" secondItem="2rN-aG-qiz" secondAttribute="leading" id="td5-Sj-ZEW"/>
                             <constraint firstItem="PLx-8G-3ly" firstAttribute="top" secondItem="2rN-aG-qiz" secondAttribute="top" id="tea-wL-pgb"/>
                             <constraint firstItem="2rN-aG-qiz" firstAttribute="trailing" secondItem="sDs-Q1-Yp7" secondAttribute="trailing" id="yDi-ZH-NJJ"/>
@@ -93,14 +93,14 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JnM-py-D87">
-                                        <rect key="frame" x="0.0" y="164" width="375" height="500"/>
+                                        <rect key="frame" x="0.0" y="88" width="375" height="725"/>
                                         <color key="backgroundColor" red="0.86274509799999999" green="0.63529411759999999" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="JnM-py-D87" secondAttribute="height" multiplier="375:500" id="84g-Eb-xzA"/>
+                                            <constraint firstAttribute="width" secondItem="JnM-py-D87" secondAttribute="height" multiplier="375:725" id="84g-Eb-xzA"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sb-9B-mHH" customClass="DrawingJointView" customModule="PoseEstimation_CoreML">
-                                        <rect key="frame" x="0.0" y="164" width="375" height="500"/>
+                                        <rect key="frame" x="0.0" y="88" width="375" height="724"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byT-hh-YDU">
@@ -132,11 +132,11 @@
                                 <constraints>
                                     <constraint firstItem="7sb-9B-mHH" firstAttribute="width" secondItem="JnM-py-D87" secondAttribute="width" id="9EY-BE-QC7"/>
                                     <constraint firstItem="7sb-9B-mHH" firstAttribute="leading" secondItem="JnM-py-D87" secondAttribute="leading" id="PPt-aK-1nx"/>
-                                    <constraint firstItem="7sb-9B-mHH" firstAttribute="height" secondItem="JnM-py-D87" secondAttribute="height" id="VTW-GK-dvm"/>
+                                    <constraint firstItem="7sb-9B-mHH" firstAttribute="height" secondItem="JnM-py-D87" secondAttribute="height" constant="-1" id="VTW-GK-dvm"/>
                                     <constraint firstItem="7sb-9B-mHH" firstAttribute="top" secondItem="JnM-py-D87" secondAttribute="top" id="Vee-JB-RCy"/>
                                     <constraint firstItem="JnM-py-D87" firstAttribute="leading" secondItem="lwQ-KY-37e" secondAttribute="leading" id="aqW-sU-djN"/>
                                     <constraint firstItem="JnM-py-D87" firstAttribute="trailing" secondItem="lwQ-KY-37e" secondAttribute="trailing" id="jom-1x-QH7"/>
-                                    <constraint firstItem="7sb-9B-mHH" firstAttribute="top" secondItem="lwQ-KY-37e" secondAttribute="top" constant="76" id="taT-Dh-gO8"/>
+                                    <constraint firstItem="7sb-9B-mHH" firstAttribute="top" secondItem="lwQ-KY-37e" secondAttribute="top" id="taT-Dh-gO8"/>
                                 </constraints>
                             </view>
                         </subviews>
