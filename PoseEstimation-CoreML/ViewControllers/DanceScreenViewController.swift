@@ -21,7 +21,6 @@ class DanceScreenViewController: UIViewController {
     
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var jointView: DrawingJointView!
-    @IBOutlet weak var labelsTableView: UITableView!
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
@@ -185,9 +184,6 @@ class DanceScreenViewController: UIViewController {
         // setup camera
         setUpCamera()
         
-        // setup tableview datasource on bottom
-        labelsTableView.dataSource = self
-        
         // setup delegate for performance measurement
         👨‍🔧.delegate = self
     }
@@ -337,7 +333,6 @@ extension DanceScreenViewController {
     
     func showKeypointsDescription(with n_kpoints: [PredictedPoint?]) {
         self.tableData = n_kpoints
-        self.labelsTableView.reloadData()
     }
 }
 

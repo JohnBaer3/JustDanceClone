@@ -20,7 +20,6 @@ class JointViewController: UIViewController {
     // MARK: - UI Properties
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var jointView: DrawingJointView!
-    @IBOutlet weak var labelsTableView: UITableView!
     
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var redoButton: UIButton!
@@ -112,9 +111,6 @@ class JointViewController: UIViewController {
         
         // setup camera
         setUpCamera()
-        
-        // setup tableview datasource on bottom
-        labelsTableView.dataSource = self
         
         // setup delegate for performance measurement
         👨‍🔧.delegate = self
@@ -275,7 +271,6 @@ extension JointViewController {
     
     func showKeypointsDescription(with n_kpoints: [PredictedPoint?]) {
         self.tableData = n_kpoints
-        self.labelsTableView.reloadData()
     }
 }
 
