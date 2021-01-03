@@ -25,10 +25,6 @@ class DanceScreenViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
     
-    @IBOutlet weak var inferenceLabel: UILabel!
-    @IBOutlet weak var etimeLabel: UILabel!
-    @IBOutlet weak var fpsLabel: UILabel!
-    
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
     var isInferencing = false

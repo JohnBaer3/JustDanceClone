@@ -25,10 +25,6 @@ class JointViewController: UIViewController {
     @IBOutlet weak var redoButton: UIButton!
     @IBOutlet weak var finishButton: UIButton!
     
-    @IBOutlet weak var inferenceLabel: UILabel!
-    @IBOutlet weak var etimeLabel: UILabel!
-    @IBOutlet weak var fpsLabel: UILabel!
-    
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
     var isInferencing = false
