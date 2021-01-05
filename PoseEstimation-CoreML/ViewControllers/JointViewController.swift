@@ -47,16 +47,11 @@ class JointViewController: UIViewController {
     // Inference Result Data
     private var tableData: [PredictedPoint?] = []
     
-    
     var recordButtonTransparent = false
     var timer = Timer()
     var timestamp: Float = 0.0
     var latestPredictions: [Int:(CGFloat,CGFloat)?] = [:]
     var predictionsWTimestamp: [Float:[Int:(CGFloat, CGFloat)?]] = [:]
-    
-    
-    
-    
     
     var isRecording = false{
         didSet{
@@ -99,10 +94,6 @@ class JointViewController: UIViewController {
             finishButton.alpha = 0
         }
     }
-    
-    
-    
-    
     
     @objc func recordPredictions(){
         predictionsWTimestamp[timestamp] = latestPredictions
@@ -163,10 +154,6 @@ class JointViewController: UIViewController {
         finishButton.layer.borderWidth = 1
         finishButton.clipsToBounds = true
     }
-    
-    
-    
-    
     
     
     

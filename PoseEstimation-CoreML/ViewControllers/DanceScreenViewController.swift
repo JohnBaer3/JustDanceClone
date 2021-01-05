@@ -22,7 +22,7 @@ class DanceScreenViewController: UIViewController {
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var jointView: DrawingJointView!
     
-    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var startRetryButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
     
     // MARK: - Performance Measurement Property
@@ -58,7 +58,7 @@ class DanceScreenViewController: UIViewController {
     
     @IBAction func startButtonClicked(_ sender: Any) {
         if !startButtonTransparent{
-            startButton.alpha = 0
+            startRetryButton.alpha = 0
             countdownLabel.alpha = 1.0
             startButtonTransparent = true
         }
@@ -73,14 +73,14 @@ class DanceScreenViewController: UIViewController {
             timer.invalidate()
         }else{
             countdownLabel.text = String(countDownTimer)
+            UIView.animate(withDuration: 0.95) { [weak self] in
+                self!.countdownLabel.transform = CGAffineTransform(scaleX: 5, y: 5)
+             } completion: { _ in
+                if self.countDownTimer > 1{
+                    self.countdownLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }
+            }
         }
-    }
-    
-    @IBAction func retryButtonClicked(_ sender: Any) {
-        analysisTimer.invalidate()
-        countDownTimer = 4
-        analysisTimeCounter = 0.0
-        startButtonClicked(UIButton())
     }
     
     func startAnalysis(){
@@ -169,10 +169,22 @@ class DanceScreenViewController: UIViewController {
     }
     
     
+    func setUpViews(){
+        startRetryButton.backgroundColor = UIColor(red: 59/255.0, green: 59/255.0, blue: 59/255.0, alpha: 1)
+        startRetryButton.layer.cornerRadius = 20
+        startRetryButton.layer.borderColor = UIColor.white.cgColor
+        startRetryButton.layer.borderWidth = 1
+        startRetryButton.clipsToBounds = true
+    }
+    
+    
+    
     
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setUpViews()
         
         // setup the model
         setUpModel()
