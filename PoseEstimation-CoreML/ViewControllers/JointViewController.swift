@@ -53,30 +53,38 @@ class JointViewController: UIViewController {
     var timestamp: Float = 0.0
     var latestPredictions: [Int:(CGFloat,CGFloat)?] = [:]
     var predictionsWTimestamp: [Float:[Int:(CGFloat, CGFloat)?]] = [:]
+    
+    
+    
+    
+    
     var isRecording = false{
         didSet{
             if isRecording{
-                flipButtons()
                 timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(recordPredictions), userInfo: nil, repeats: true)
             }else{
-                flipButtons()
+
             }
         }
     }
     
     @IBAction func recordButtonClicked(_ sender: Any) {
-        isRecording = true
+        if !isRecording{
+            isRecording = true
+            recordButton.setTitle("Stop", for: .normal)
+            recordButton.backgroundColor = UIColor(white: 1, alpha: 0)
+        }else{
+            flipButtons()
+            isRecording = false
+            recordButton.setTitle("Record", for: .normal)
+            recordButton.backgroundColor = UIColor(red: 59/255.0, green: 59/255.0, blue: 59/255.0, alpha: 1)
+        }
     }
     
     @IBAction func redoButtonClicked(_ sender: Any) {
         timer.invalidate()
         predictionsWTimestamp = [:]
         isRecording = false
-    }
-    
-    @objc func recordPredictions(){
-        predictionsWTimestamp[timestamp] = latestPredictions
-        timestamp += 0.1
     }
     
     func flipButtons(){
@@ -95,12 +103,19 @@ class JointViewController: UIViewController {
     
     
     
+    
+    @objc func recordPredictions(){
+        predictionsWTimestamp[timestamp] = latestPredictions
+        timestamp += 0.1
+    }
+    
+    
+    
     // MARK: - View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        redoButton.alpha = 0
-        finishButton.alpha = 0
+        setUpViews()
         
         // setup the model
         setUpModel()
@@ -125,6 +140,35 @@ class JointViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.videoCapture.stop()
     }
+    
+    func setUpViews(){
+        redoButton.alpha = 0
+        finishButton.alpha = 0
+        
+        recordButton.backgroundColor = UIColor(red: 59/255.0, green: 59/255.0, blue: 59/255.0, alpha: 1)
+        recordButton.layer.cornerRadius = 20
+        recordButton.layer.borderColor = UIColor.white.cgColor
+        recordButton.layer.borderWidth = 1
+        recordButton.clipsToBounds = true
+        
+        redoButton.backgroundColor = UIColor(red: 59/255.0, green: 59/255.0, blue: 59/255.0, alpha: 1)
+        redoButton.layer.cornerRadius = 20
+        redoButton.layer.borderColor = UIColor.white.cgColor
+        redoButton.layer.borderWidth = 1
+        redoButton.clipsToBounds = true
+        
+        finishButton.backgroundColor = UIColor(red: 29/255.0, green: 105/255.0, blue: 153/255.0, alpha: 1)
+        finishButton.layer.cornerRadius = 20
+        finishButton.layer.borderColor = UIColor.white.cgColor
+        finishButton.layer.borderWidth = 1
+        finishButton.clipsToBounds = true
+    }
+    
+    
+    
+    
+    
+    
     
     // MARK: - Setup Core ML
     func setUpModel() {
