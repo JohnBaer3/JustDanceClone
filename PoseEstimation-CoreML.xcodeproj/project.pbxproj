@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0EB3C225C265DF7716F7DB48 /* Pods_PoseEstimation_CoreML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF1A1D6E26AD964E09D71B6 /* Pods_PoseEstimation_CoreML.framework */; };
 		554F14772202B07B00B828B0 /* PoseEstimation_CoreMLTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F14762202B07B00B828B0 /* PoseEstimation_CoreMLTests.swift */; };
 		554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */; };
 		554F14832202B82600B828B0 /* UIImage+CVPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F14812202B68300B828B0 /* UIImage+CVPixelBuffer.swift */; };
@@ -30,6 +31,7 @@
 		CBCC06C025942E9C00997A70 /* PointRecords.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC06BF25942E9C00997A70 /* PointRecords.swift */; };
 		CBCC06C62598444200997A70 /* DanceScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC06C52598444200997A70 /* DanceScreenViewController.swift */; };
 		CBCC06DB25A1090900997A70 /* FinalScoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC06DA25A1090900997A70 /* FinalScoreViewController.swift */; };
+		CBCC075E25A51BEE00997A70 /* ConfettiType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCC075D25A51BEE00997A70 /* ConfettiType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3EF1A1D6E26AD964E09D71B6 /* Pods_PoseEstimation_CoreML.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PoseEstimation_CoreML.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F14742202B07B00B828B0 /* PoseEstimation-CoreMLTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PoseEstimation-CoreMLTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		554F14762202B07B00B828B0 /* PoseEstimation_CoreMLTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimation_CoreMLTests.swift; sourceTree = "<group>"; };
 		554F14782202B07B00B828B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,6 +60,7 @@
 		557F531E20ED252400CFCCD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		557F532420ED25AF00CFCCD7 /* VideoCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCapture.swift; sourceTree = "<group>"; };
 		557F532520ED25AF00CFCCD7 /* Measure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Measure.swift; sourceTree = "<group>"; };
+		629368C5086BFCF50646F01D /* Pods-PoseEstimation-CoreML.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseEstimation-CoreML.debug.xcconfig"; path = "Target Support Files/Pods-PoseEstimation-CoreML/Pods-PoseEstimation-CoreML.debug.xcconfig"; sourceTree = "<group>"; };
 		714087F22302E7AC00F7EDF4 /* PoseMatchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseMatchingViewController.swift; sourceTree = "<group>"; };
 		71EF2DC022C3662A009391C8 /* MovingAverageFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovingAverageFilter.swift; sourceTree = "<group>"; };
 		71EF2DC222C469FD009391C8 /* HeatmapPostProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatmapPostProcessor.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 		CBCC06BF25942E9C00997A70 /* PointRecords.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointRecords.swift; sourceTree = "<group>"; };
 		CBCC06C52598444200997A70 /* DanceScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DanceScreenViewController.swift; sourceTree = "<group>"; };
 		CBCC06DA25A1090900997A70 /* FinalScoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScoreViewController.swift; sourceTree = "<group>"; };
+		CBCC075D25A51BEE00997A70 /* ConfettiType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiType.swift; sourceTree = "<group>"; };
+		E5C44BA0A22168026727E42E /* Pods-PoseEstimation-CoreML.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoseEstimation-CoreML.release.xcconfig"; path = "Target Support Files/Pods-PoseEstimation-CoreML/Pods-PoseEstimation-CoreML.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +86,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB3C225C265DF7716F7DB48 /* Pods_PoseEstimation_CoreML.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A104853899000D6FADBDE97 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EF1A1D6E26AD964E09D71B6 /* Pods_PoseEstimation_CoreML.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		554F14752202B07B00B828B0 /* PoseEstimation-CoreMLTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +123,7 @@
 		554F148E2203059B00B828B0 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				CBCC075D25A51BEE00997A70 /* ConfettiType.swift */,
 				71EF2DC422C4878D009391C8 /* PredictedPoint.swift */,
 				CBCC06BF25942E9C00997A70 /* PointRecords.swift */,
 				71EF2DC222C469FD009391C8 /* HeatmapPostProcessor.swift */,
@@ -124,6 +140,8 @@
 				557F531120ED252100CFCCD7 /* PoseEstimation-CoreML */,
 				554F14752202B07B00B828B0 /* PoseEstimation-CoreMLTests */,
 				557F531020ED252100CFCCD7 /* Products */,
+				D759BA55CADEA7024DFE51F9 /* Pods */,
+				2A104853899000D6FADBDE97 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +181,15 @@
 			path = "Pose Matching View Controller";
 			sourceTree = "<group>";
 		};
+		D759BA55CADEA7024DFE51F9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				629368C5086BFCF50646F01D /* Pods-PoseEstimation-CoreML.debug.xcconfig */,
+				E5C44BA0A22168026727E42E /* Pods-PoseEstimation-CoreML.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -188,9 +215,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 557F532120ED252400CFCCD7 /* Build configuration list for PBXNativeTarget "PoseEstimation-CoreML" */;
 			buildPhases = (
+				75B0BAB54E2312F204223276 /* [CP] Check Pods Manifest.lock */,
 				557F530B20ED252100CFCCD7 /* Sources */,
 				557F530C20ED252100CFCCD7 /* Frameworks */,
 				557F530D20ED252100CFCCD7 /* Resources */,
+				82945ED02E22BC02898EECB6 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -261,6 +290,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		75B0BAB54E2312F204223276 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PoseEstimation-CoreML-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		82945ED02E22BC02898EECB6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PoseEstimation-CoreML/Pods-PoseEstimation-CoreML-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PoseEstimation-CoreML/Pods-PoseEstimation-CoreML-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PoseEstimation-CoreML/Pods-PoseEstimation-CoreML-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		554F14702202B07B00B828B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -288,6 +359,7 @@
 				555B477421F61234009026AB /* DrawingJointView.swift in Sources */,
 				71EF2DC322C469FD009391C8 /* HeatmapPostProcessor.swift in Sources */,
 				554F14822202B68300B828B0 /* UIImage+CVPixelBuffer.swift in Sources */,
+				CBCC075E25A51BEE00997A70 /* ConfettiType.swift in Sources */,
 				557F532820ED25B000CFCCD7 /* Measure.swift in Sources */,
 				714087F32302E7AC00F7EDF4 /* PoseMatchingViewController.swift in Sources */,
 				557F531320ED252100CFCCD7 /* AppDelegate.swift in Sources */,
@@ -486,6 +558,7 @@
 		};
 		557F532220ED252400CFCCD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 629368C5086BFCF50646F01D /* Pods-PoseEstimation-CoreML.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -505,6 +578,7 @@
 		};
 		557F532320ED252400CFCCD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5C44BA0A22168026727E42E /* Pods-PoseEstimation-CoreML.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

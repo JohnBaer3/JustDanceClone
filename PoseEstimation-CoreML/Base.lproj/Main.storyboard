@@ -58,7 +58,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Q4Q-Yj-aEN" kind="show" identifier="GoToDanceSegue" id="7zI-Ei-mhb"/>
+                                    <segue destination="Q4Q-Yj-aEN" kind="show" id="lYO-3x-WE6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -108,6 +108,16 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7sb-9B-mHH" customClass="DrawingJointView" customModule="PoseEstimation_CoreML">
                                         <rect key="frame" x="0.0" y="88" width="375" height="724"/>
+                                        <subviews>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nk-V6-fA3">
+                                                <rect key="frame" x="164" y="567" width="46" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <segue destination="Mzs-BE-IO3" kind="show" identifier="scoreScreenSegue" id="oAD-Dv-1AU"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byT-hh-YDU">
@@ -155,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5k-85-6Co" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3260" y="-206.1576354679803"/>
+            <point key="canvasLocation" x="3330" y="-206"/>
         </scene>
         <!--Final Score View Controller-->
         <scene sceneID="v2K-gC-0iz">
@@ -176,13 +186,14 @@
                         <viewLayoutGuide key="safeArea" id="6QW-ol-u7Z"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="5dM-KO-A7I"/>
                     <connections>
                         <outlet property="scoreLabel" destination="yzo-SG-3vd" id="rvD-B1-bLy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0h-1x-60L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4250" y="-206"/>
+            <point key="canvasLocation" x="4255" y="-206"/>
         </scene>
         <!--Joint-->
         <scene sceneID="yfs-8v-8w3">
