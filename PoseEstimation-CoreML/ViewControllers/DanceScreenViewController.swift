@@ -24,6 +24,7 @@ class DanceScreenViewController: UIViewController {
     
     @IBOutlet weak var startRetryButton: UIButton!
     @IBOutlet weak var countdownLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
     
     // MARK: - Performance Measurement Property
     private let 👨‍🔧 = 📏()
@@ -51,10 +52,8 @@ class DanceScreenViewController: UIViewController {
     var startButtonTransparent = false
     var timer = Timer()
     var analysisTimer = Timer()
-    
-    //Change back!
-    var countDownTimer = 1
-    
+    var countDownTimer = 4
+    var scoreForLast2Seconds: CGFloat = 0.0
     
     var analysisTimeCounter: Float = 0.0
     var totalScore: CGFloat = 0.0
@@ -88,7 +87,7 @@ class DanceScreenViewController: UIViewController {
     }
     
     func startAnalysis(){
-        analysisTimeCounter = 0
+        analysisTimeCounter = 0.0
         analysisTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(analyze), userInfo: nil, repeats: true)
     }
     
@@ -99,7 +98,6 @@ class DanceScreenViewController: UIViewController {
         //Fade out to final screen
         let finalScoreVC = storyboard?.instantiateViewController(withIdentifier: "FinalScoreViewController") as! FinalScoreViewController
         finalScoreVC.finalScore = totalScore
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             let transition: CATransition = CATransition()
             transition.duration = 2.0
@@ -112,7 +110,6 @@ class DanceScreenViewController: UIViewController {
     
     @objc func analyze(){
         var totalScoreCurrTime:CGFloat = 0.0
-        
         if predictionsWTimestamp[analysisTimeCounter] == nil{
             analysisTimer.invalidate()
             finishAnalyzing()
@@ -150,6 +147,26 @@ class DanceScreenViewController: UIViewController {
                     }
                 }
             }
+            //Right here, if totalScoreCurrTime > 0.6 then good, > 0.8 then great
+            scoreForLast2Seconds += (1-totalScoreCurrTime)
+            if analysisTimeCounter != 0.0 && analysisTimeCounter.truncatingRemainder(dividingBy: 4) == 0.0{
+                if scoreForLast2Seconds > (8*4){ //80% for 4 seconds
+                    ratingLabel.text = "Great!"
+                }else if scoreForLast2Seconds > (6*4){ //60% for 4 seconds
+                    ratingLabel.text = "Good!"
+                }else{
+                    ratingLabel.text = "OK"
+                }
+                UIButton.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+                    self.ratingLabel.alpha = 1.0
+                }, completion: { (finished: Bool) in
+                    UIButton.animate(withDuration: 0.5, delay: 2, options: .curveEaseOut, animations: {
+                        self.ratingLabel.alpha = 0.0
+                    }, completion: nil)
+                })
+                scoreForLast2Seconds = 0
+            }
+            
             analysisTimeCounter += 0.1
         }
         totalScore += (1-totalScoreCurrTime)
@@ -187,6 +204,8 @@ class DanceScreenViewController: UIViewController {
         startRetryButton.layer.borderColor = UIColor.white.cgColor
         startRetryButton.layer.borderWidth = 1
         startRetryButton.clipsToBounds = true
+        
+        ratingLabel.alpha = 0
     }
     
     
@@ -245,7 +264,7 @@ class DanceScreenViewController: UIViewController {
     }()
 
     override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+//        super.viewDidAppear(animated)
     }
     
     
