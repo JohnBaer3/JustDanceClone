@@ -58,6 +58,7 @@ class DanceScreenViewController: UIViewController {
     var analysisTimeCounter: Float = 0.0
     var totalScore: CGFloat = 0.0
     var avgScore: CGFloat = 0.0
+    var everyFour: Float = 4.0
     
     @IBAction func startButtonClicked(_ sender: Any) {
         if !startButtonTransparent{
@@ -149,7 +150,8 @@ class DanceScreenViewController: UIViewController {
             }
             //Right here, if totalScoreCurrTime > 0.6 then good, > 0.8 then great
             scoreForLast2Seconds += (1-totalScoreCurrTime)
-            if analysisTimeCounter != 0.0 && analysisTimeCounter.truncatingRemainder(dividingBy: 4) == 0.0{
+            print(analysisTimeCounter)
+            if analysisTimeCounter > everyFour{
                 if scoreForLast2Seconds > (8*4){ //80% for 4 seconds
                     ratingLabel.text = "Great!"
                 }else if scoreForLast2Seconds > (6*4){ //60% for 4 seconds
@@ -165,8 +167,8 @@ class DanceScreenViewController: UIViewController {
                     }, completion: nil)
                 })
                 scoreForLast2Seconds = 0
+                everyFour += 4
             }
-            
             analysisTimeCounter += 0.1
         }
         totalScore += (1-totalScoreCurrTime)
