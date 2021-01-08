@@ -79,10 +79,10 @@ class DrawingJointView: UIView {
     private func drawLine(ctx: CGContext, from p1: CGPoint, to p2: CGPoint, color: CGColor) {
         ctx.setStrokeColor(color)
         ctx.setLineWidth(3.0)
-        
+
         ctx.move(to: p1)
         ctx.addLine(to: p2)
-        
+
         ctx.strokePath();
     }
     

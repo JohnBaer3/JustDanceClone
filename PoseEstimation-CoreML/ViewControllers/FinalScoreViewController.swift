@@ -11,14 +11,21 @@ import UIKit
 class FinalScoreViewController: UIViewController {
 
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var accuracyLabel: UILabel!
+    @IBOutlet weak var streakLabel: UILabel!
     @IBOutlet weak var continueButton: UIButton!
     
     var finalScore: CGFloat = 0.0
+    var maxStreak = 0
+    var accuracy: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scoreLabel.text = String(Double(finalScore))
+        scoreLabel.text = String(Int(finalScore))
+        accuracyLabel.text = String(Int(accuracy)) + "%"
+        streakLabel.text = String(maxStreak)
+        
         setUpViews()
     }
     

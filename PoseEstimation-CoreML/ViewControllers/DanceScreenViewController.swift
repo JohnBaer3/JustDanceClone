@@ -59,6 +59,8 @@ class DanceScreenViewController: UIViewController {
     var totalScore: CGFloat = 0.0
     var avgScore: CGFloat = 0.0
     var everyFour: Float = 4.0
+    var maxStreak = 0
+    var currStreak = 0
     
     @IBAction func startButtonClicked(_ sender: Any) {
         if !startButtonTransparent{
@@ -92,6 +94,8 @@ class DanceScreenViewController: UIViewController {
         analysisTimer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(analyze), userInfo: nil, repeats: true)
     }
     
+    
+    
     func finishAnalyzing(){
         //Do confetti
         view.layer.addSublayer(confettiLayer)
@@ -99,6 +103,9 @@ class DanceScreenViewController: UIViewController {
         //Fade out to final screen
         let finalScoreVC = storyboard?.instantiateViewController(withIdentifier: "FinalScoreViewController") as! FinalScoreViewController
         finalScoreVC.finalScore = totalScore
+        finalScoreVC.maxStreak = maxStreak/10
+        finalScoreVC.accuracy = totalScore/CGFloat(analysisTimeCounter)
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
             let transition: CATransition = CATransition()
             transition.duration = 2.0
@@ -107,6 +114,8 @@ class DanceScreenViewController: UIViewController {
             self.navigationController?.pushViewController(finalScoreVC, animated: false)
        }
     }
+    
+    
     
     
     @objc func analyze(){
@@ -143,18 +152,18 @@ class DanceScreenViewController: UIViewController {
                     if predictionsWTimestamp[analysisTimeCounter]![connectingBodyPart] != nil{
                         if latestPredictions[body] != nil && latestPredictions[connectingBodyPart] != nil{
                             let diffInAngle = calculateDiffInAngle(predictedPointsTuple!, predForCurrTime[connectingBodyPart]!!, startBodyPart:body, connectingBodyPart:connectingBodyPart)
-                            totalScoreCurrTime += (diffInAngle / 360 / 13 / modifier)
+                            totalScoreCurrTime += (diffInAngle / 360 / 13 / modifier * 10)
                         }
                     }
                 }
             }
+                        
             //Right here, if totalScoreCurrTime > 0.6 then good, > 0.8 then great
-            scoreForLast2Seconds += (1-totalScoreCurrTime)
-            print(analysisTimeCounter)
+            scoreForLast2Seconds += (10-totalScoreCurrTime)
             if analysisTimeCounter > everyFour{
-                if scoreForLast2Seconds > (8*4){ //80% for 4 seconds
+                if scoreForLast2Seconds > (80*4){ //80% for 4 seconds
                     ratingLabel.text = "Great!"
-                }else if scoreForLast2Seconds > (6*4){ //60% for 4 seconds
+                }else if scoreForLast2Seconds > (60*4){ //60% for 4 seconds
                     ratingLabel.text = "Good!"
                 }else{
                     ratingLabel.text = "OK"
@@ -171,7 +180,13 @@ class DanceScreenViewController: UIViewController {
             }
             analysisTimeCounter += 0.1
         }
-        totalScore += (1-totalScoreCurrTime)
+        if (10-totalScoreCurrTime) > 6{
+            currStreak += 1
+            if currStreak > maxStreak{
+                maxStreak = currStreak
+            }
+        }
+        totalScore += (10-totalScoreCurrTime)
     }
     
     
@@ -209,11 +224,6 @@ class DanceScreenViewController: UIViewController {
         
         ratingLabel.alpha = 0
     }
-    
-    
-    
-    
-    
     
     
     
@@ -264,11 +274,6 @@ class DanceScreenViewController: UIViewController {
             return cell
         }
     }()
-
-    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-    }
-    
     
     
     // MARK: - View Controller Life Cycle
