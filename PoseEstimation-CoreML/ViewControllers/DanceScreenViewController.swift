@@ -120,6 +120,7 @@ class DanceScreenViewController: UIViewController {
     
     @objc func analyze(){
         var totalScoreCurrTime:CGFloat = 0.0
+        print(analysisTimeCounter)
         if predictionsWTimestamp[analysisTimeCounter] == nil{
             analysisTimer.invalidate()
             finishAnalyzing()

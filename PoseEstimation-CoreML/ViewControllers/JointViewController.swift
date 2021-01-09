@@ -1,9 +1,9 @@
 //
-//  ViewController.swift
+//  DanceScreenViewController.swift
 //  PoseEstimation-CoreML
 //
-//  Created by GwakDoyoung on 05/07/2018.
-//  Copyright © 2018 tucan9389. All rights reserved.
+//  Created by John Baer on 12/26/20.
+//  Copyright © 2020 tucan9389. All rights reserved.
 //
 
 import UIKit
@@ -58,7 +58,7 @@ class JointViewController: UIViewController {
             if isRecording{
                 timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(recordPredictions), userInfo: nil, repeats: true)
             }else{
-
+                timer.invalidate()
             }
         }
     }
@@ -98,6 +98,7 @@ class JointViewController: UIViewController {
     @objc func recordPredictions(){
         predictionsWTimestamp[timestamp] = latestPredictions
         timestamp += 0.1
+        print(timestamp)
     }
     
     
