@@ -14,7 +14,7 @@ To learn more about CoreML, CoreMedia in a hands-on project that I've been meani
 
 I used Apple's Pose Estimation for iOS with CoreML to get the body-pose estimations. 
 
-<img src="https://github.com/JohnBaer3/JustDanceClone/blob/main/IMG_6954.png" width="50" height="100">
+<img src="https://github.com/JohnBaer3/JustDanceClone/blob/main/IMG_6954.png" width="100" height="200">
 
 
 
