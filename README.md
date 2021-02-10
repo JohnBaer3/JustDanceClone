@@ -30,7 +30,7 @@ This app was built on-top of tucan9389's PoseEstimation-CoreML repo, that uses A
 
 <img src="https://github.com/JohnBaer3/JustDanceClone/blob/main/IMG_6957.PNG" width="200" height="400">
 
-4. The results are tallied up and displayed on the final screen. 
+4. The results are tallied up, and displayed on the final screen. 
 
 ## App in action:
 https://vimeo.com/504189098
