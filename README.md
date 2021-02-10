@@ -1,16 +1,16 @@
 # JustDanceClone
 
-### Week 1 of "An App A Week" Challenge. 
-
-## Just Dance game for iOS! 
+### Week 1 of "An App A Week" Challenge - Just Dance game for iOS! 
 
 Record the dance you want to dance along to, then dance to the same dance for the app to rate it!
+
 
 ### Goals:
 
 To learn more about CoreML, CoreMedia in a hands-on project that I've been meaning to attempt for a while 
 
-## Technical write-up 
+
+### Technical write-up 
 
 This app was built on-top of tucan9389's PoseEstimation-CoreML repo, that uses Apple's Pose Estmation for iOS with CoreML to get the body-pose estimations
 
