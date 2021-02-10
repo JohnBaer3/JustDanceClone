@@ -20,7 +20,7 @@ This app was built on-top of tucan9389's PoseEstimation-CoreML repo, that uses A
 
 <img src="https://github.com/JohnBaer3/JustDanceClone/blob/main/IMG_6955.png" width="200" height="400">
 
-2. Once the user clicks "record", I start storing the predicted xy coordinates + time captured into a [Float:[Int:[(CGFloat, CGFloat)?]]] Dictionary, where the reference is in the order of time:[number related to a body point:[(x y coordinate)]]. I capture a new frame and put it into the dictionary every 1/10 seconds, and is done until the user stops recording, or 20 seconds passes for memory and performance issues. 
+2. Once the user clicks "record", I start storing the predicted xy coordinates + time captured into a [Float:[Int:[(CGFloat, CGFloat)?]]] Dictionary, where the reference is in the order of,  time:[number related to a body point:[(x y coordinate)]]. I capture a new frame and put it into the dictionary every 1/10 seconds, and is done until the user stops recording, or 20 seconds passes for memory and performance issues. 
 
 <img src="https://github.com/JohnBaer3/JustDanceClone/blob/main/IMG_6956.PNG" width="200" height="400">
 
