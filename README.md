@@ -24,13 +24,13 @@ This app was built on-top of tucan9389's PoseEstimation-CoreML repo, that uses A
 
 <img src="https://github.com/JohnBaer3/JustDanceClone/blob/main/IMG_6956.png" width="200" height="400">
 
-3. The second screen starts off with a "Start" button and a 3 second timer for the user to position themselves in frame. Thereafter the screen starts comparing the user's current dance to the previous, recorded dance. To account for body-part's xy coordinates being compared not being a good predictor(a case where someone might be dancing perfectly, but be recording themselves 100px lower on the screen, giving them a terrible score would be very likely), I calculated the dance's score based on angle between each of the body-parts. To expand on this, if a user's right-arm and right-wrist is calculated to be at a 90* angle, and the same for the recorded dance, we can conclude that they are both in the same relative motion for a given timeframe. The accuracy of the dance for each 1/10 second is calculated as: 1-(difference in angle for each of the body parts)
+3. The second screen starts off with a "Start" button and a 3 second timer for the user to position themselves in frame. Thereafter the screen starts comparing the user's current dance to the previous, recorded dance. To account for body-part's xy coordinates being compared not being a good predictor(a case where someone might be dancing perfectly, but be recording themselves 100px lower on the screen, giving them a terrible score would be very likely), I calculated the dance's score based on angle between each of the body-parts. To expand on this, if a user's right-arm and right-wrist is calculated to be at a 90* angle, and the same for the recorded dance, we can conclude that they are both in the same relative motion for a given timeframe. The accuracy of the dance for each 1/10 second is calculated as: 1-(difference in angle for each of the body parts / 360 / 13), with slight modifiers for body-parts that are predicted poorly (wrists tended to to not be predicted well with fast movements). 
 
+3.5 Every 5 seconds, when the score is > 85% for the previous 3 seconds a "Great!" indicator pops up for the user. For > 60% I give a "Good!" indicator, otherwise an "Ok" indicator pops up. 
 
+<img src="https://github.com/JohnBaer3/JustDanceClone/blob/main/IMG_6957.png" width="200" height="400">
 
-In the initial screen, I am grabbing estimations from the front-facing camera. Once the user clicks "start", the app begins to record each of the predictions every 1/10 seconds, and builds a Dictionary that matches each of the 1/10 seconds to a Dictionary of the body-point estimations. The body-point estimations are stored in a form of 'angle from current body-part to adjacent body-part'. 
+4. The results are tallied up and displayed on the final screen. 
 
-This is important, as angle between body-parts is a more accurate predictor 
-
-### App in action:
+## App in action:
 https://vimeo.com/504189098
