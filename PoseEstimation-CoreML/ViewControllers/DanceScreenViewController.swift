@@ -80,7 +80,7 @@ class DanceScreenViewController: UIViewController {
         }else{
             countdownLabel.text = String(countDownTimer)
             UIView.animate(withDuration: 0.95) { [weak self] in
-                self!.countdownLabel.transform = CGAffineTransform(scaleX: 5, y: 5)
+                self?.countdownLabel.transform = CGAffineTransform(scaleX: 5, y: 5)
              } completion: { _ in
                 if self.countDownTimer > 1{
                     self.countdownLabel.transform = CGAffineTransform(scaleX: 1, y: 1)
@@ -106,88 +106,103 @@ class DanceScreenViewController: UIViewController {
         finalScoreVC.maxStreak = maxStreak/10
         finalScoreVC.accuracy = totalScore/CGFloat(analysisTimeCounter)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4) { [weak self] in
             let transition: CATransition = CATransition()
             transition.duration = 2.0
             transition.type = CATransitionType.fade
-            self.navigationController?.view.layer.add(transition, forKey: nil)
-            self.navigationController?.pushViewController(finalScoreVC, animated: false)
+            self?.navigationController?.view.layer.add(transition, forKey: nil)
+            self?.navigationController?.pushViewController(finalScoreVC, animated: false)
        }
     }
     
     
     
-    
+    //Go through each of the body parts, calculate the difference between the actual dance and the current dance
+    //Calculate things like streaks, total score, and pop up words for the game
     @objc func analyze(){
-        var totalScoreCurrTime:CGFloat = 0.0
-        print(analysisTimeCounter)
-        if predictionsWTimestamp[analysisTimeCounter] == nil{
+        if let predForCurrTime = predictionsWTimestamp[analysisTimeCounter]{
+            //Goes through each of the body points and calculates the total accuracy score for this point of time
+            let totalScoreCurrTime = calculateTotalScore(predForCurrTime)
+            
+            //Animation to pop up Great! Good! words to indicate how well user is doing
+            scorePopUpAnim(totalScoreCurrTime)
+            
+            //Calculate streak
+            if (10-totalScoreCurrTime) > 6{
+                currStreak += 1
+                if currStreak > maxStreak{
+                    maxStreak = currStreak
+                }
+            }
+            totalScore += (10-totalScoreCurrTime)
+            
+            analysisTimeCounter += 0.1
+        }else{
             analysisTimer.invalidate()
             finishAnalyzing()
-        }else{
-            let predForCurrTime = predictionsWTimestamp[analysisTimeCounter]!
-            
-            //From 0 to 13, calculate current predictions - different calculations for each
-            for (body, predictedPointsTuple) in predForCurrTime {
-                if predictedPointsTuple != nil{
-                    var connectingBodyPart: Int = 0
-                    var modifier: CGFloat = 1.0
-                    switch body{
-                    case 0: connectingBodyPart = 1
-                    case 1: connectingBodyPart = 0
-                    case 2: connectingBodyPart = 1
-                    case 3: connectingBodyPart = 2
-                    case 4: connectingBodyPart = 3; modifier = 3
-                    case 5: connectingBodyPart = 1
-                    case 6: connectingBodyPart = 5
-                    case 7: connectingBodyPart = 6; modifier = 3
-                    case 8: connectingBodyPart = 1
-                    case 9: connectingBodyPart = 8
-                    case 10: connectingBodyPart = 9; modifier = 2
-                    case 11: connectingBodyPart = 1
-                    case 12: connectingBodyPart = 11
-                    case 13: connectingBodyPart = 12; modifier = 2
-                    default: connectingBodyPart = 0
-                    }
-                    //If null, we just add 0. It's our code that's prob wrong
-                    if predictionsWTimestamp[analysisTimeCounter]![connectingBodyPart] != nil{
-                        if latestPredictions[body] != nil && latestPredictions[connectingBodyPart] != nil{
-                            let diffInAngle = calculateDiffInAngle(predictedPointsTuple!, predForCurrTime[connectingBodyPart]!!, startBodyPart:body, connectingBodyPart:connectingBodyPart)
-                            totalScoreCurrTime += (diffInAngle / 360 / 13 / modifier * 10)
-                        }
+        }
+    }
+    
+    //From 0 to 13, calculate current predictions
+    //Caculate the difference in angle between expected and actual, and add them up to a total score
+    //The higher the score at this step, the higher the difference we saw in angle.
+    func calculateTotalScore(_ predForCurrTime: [Int : (CGFloat, CGFloat)?]) -> CGFloat{
+        var totalScore: CGFloat = 0
+        for (body, predictedPointsTuple) in predForCurrTime {
+            if predictedPointsTuple != nil{
+                var connectingBodyPart: Int = 0
+                var modifier: CGFloat = 1.0
+                switch body{
+                case 0: connectingBodyPart = 1
+                case 1: connectingBodyPart = 0
+                case 2: connectingBodyPart = 1
+                case 3: connectingBodyPart = 2
+                case 4: connectingBodyPart = 3; modifier = 3
+                case 5: connectingBodyPart = 1
+                case 6: connectingBodyPart = 5
+                case 7: connectingBodyPart = 6; modifier = 3
+                case 8: connectingBodyPart = 1
+                case 9: connectingBodyPart = 8
+                case 10: connectingBodyPart = 9; modifier = 2
+                case 11: connectingBodyPart = 1
+                case 12: connectingBodyPart = 11
+                case 13: connectingBodyPart = 12; modifier = 2
+                default: connectingBodyPart = 0
+                }
+                //If null, we just add 0 (so say 0 error). The ML wasn't able to find the body-part
+                if predictionsWTimestamp[analysisTimeCounter]![connectingBodyPart] != nil{
+                    if latestPredictions[body] != nil && latestPredictions[connectingBodyPart] != nil{
+                        let diffInAngle = calculateDiffInAngle(predictedPointsTuple!, predForCurrTime[connectingBodyPart]!!, startBodyPart:body, connectingBodyPart:connectingBodyPart)
+                        totalScore += (diffInAngle / 360 / 13 / modifier * 10)
                     }
                 }
             }
-                        
-            //Right here, if totalScoreCurrTime > 0.6 then good, > 0.8 then great
-            scoreForLast2Seconds += (10-totalScoreCurrTime)
-            if analysisTimeCounter > everyFour{
-                if scoreForLast2Seconds > (80*4){ //80% for 4 seconds
-                    ratingLabel.text = "Great!"
-                }else if scoreForLast2Seconds > (60*4){ //60% for 4 seconds
-                    ratingLabel.text = "Good!"
-                }else{
-                    ratingLabel.text = "OK"
-                }
-                UIButton.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
-                    self.ratingLabel.alpha = 1.0
-                }, completion: { (finished: Bool) in
-                    UIButton.animate(withDuration: 0.5, delay: 2, options: .curveEaseOut, animations: {
-                        self.ratingLabel.alpha = 0.0
-                    }, completion: nil)
-                })
-                scoreForLast2Seconds = 0
-                everyFour += 4
-            }
-            analysisTimeCounter += 0.1
         }
-        if (10-totalScoreCurrTime) > 6{
-            currStreak += 1
-            if currStreak > maxStreak{
-                maxStreak = currStreak
+        return totalScore
+    }
+    
+    
+    //Calculate the average score for the last 4 seconds, if avg > 80% then pop up "Great!" words, otherwise pop up "Good!" etc
+    func scorePopUpAnim(_ totalScoreCurrTime: CGFloat){
+        scoreForLast2Seconds += (10-totalScoreCurrTime)
+        if analysisTimeCounter > everyFour{
+            if scoreForLast2Seconds > (80*4){ //80% for 4 seconds
+                ratingLabel.text = "Great!"
+            }else if scoreForLast2Seconds > (60*4){ //60% for 4 seconds
+                ratingLabel.text = "Good!"
+            }else{
+                ratingLabel.text = "OK"
             }
+            UIButton.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+                self?.ratingLabel.alpha = 1.0
+            }, completion: { (finished: Bool) in
+                UIButton.animate(withDuration: 0.5, delay: 2, options: .curveEaseOut, animations: { [weak self] in
+                    self?.ratingLabel.alpha = 0.0
+                }, completion: nil)
+            })
+            scoreForLast2Seconds = 0
+            everyFour += 4
         }
-        totalScore += (10-totalScoreCurrTime)
     }
     
     

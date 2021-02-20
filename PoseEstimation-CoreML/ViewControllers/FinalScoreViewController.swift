@@ -39,8 +39,8 @@ class FinalScoreViewController: UIViewController {
         continueButton.layer.borderWidth = 1
         continueButton.clipsToBounds = true
         
-        UIButton.animate(withDuration: 1.0, delay: 4.0, options: .curveEaseOut, animations: {
-            self.continueButton.alpha = 1.0
+        UIButton.animate(withDuration: 1.0, delay: 4.0, options: .curveEaseOut, animations: { [weak self] in
+            self?.continueButton.alpha = 1.0
         }, completion: nil)
     }
     
