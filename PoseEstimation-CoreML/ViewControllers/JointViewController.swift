@@ -17,6 +17,8 @@ class JointViewController: UIViewController {
     
     public typealias DetectObjectsCompletion = ([PredictedPoint?]?, Error?) -> Void
     
+    var bla = ""
+    
     // MARK: - UI Properties
     @IBOutlet weak var videoPreview: UIView!
     @IBOutlet weak var jointView: DrawingJointView!
